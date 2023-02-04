@@ -35,6 +35,3 @@ heroku open '/auth?client_id=foo&response_type=id_token&redirect_uri=https%3A%2F
   details, those are referenced by a path specific cookie and stored using your data adapter.
 
 > **HINT**: For more details consider documentation, configuration and details found in the [oidc-provider repository](https://github.com/panva/node-oidc-provider).
-
-http://localhost/auth?client_id=foo&response_type=id_token&redirect_uri=https://jwt.io&scope=openid%20email&nonce=foobar&prompt=login
-foo@example.com

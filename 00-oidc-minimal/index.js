@@ -1,14 +1,16 @@
-const assert = require('assert');
-const Provider = require('oidc-provider');
+// const assert = require('assert');
+// const Provider = require('oidc-provider');
+import assert from 'assert'
+import Provider from 'oidc-provider'
 
-assert(process.env.HEROKU_APP_NAME, 'process.env.HEROKU_APP_NAME missing');
-assert(process.env.PORT, 'process.env.PORT missing');
-assert(process.env.SECURE_KEY, 'process.env.SECURE_KEY missing, run `heroku addons:create securekey`');
-assert.equal(process.env.SECURE_KEY.split(',').length, 2, 'process.env.SECURE_KEY format invalid');
+const PROTOCOL = "http";
+const HOSTNAME = "localhost";
+const PORT = 80;
+const SECURE_KEY = 'securekey,heroku-redis:hobby-dev'; 
 
 // new Provider instance with no extra configuration, will run in default, just needs the issuer
 // identifier, uses data from runtime-dyno-metadata heroku here
-const oidc = new Provider(`https://${process.env.HEROKU_APP_NAME}.herokuapp.com`, {
+const oidc = new Provider(`${PROTOCOL}://${HOSTNAME}:${PORT}`, {
   clients: [
     {
       client_id: 'foo',
@@ -19,7 +21,7 @@ const oidc = new Provider(`https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
     },
   ],
   cookies: {
-    keys: process.env.SECURE_KEY.split(','),
+    keys: SECURE_KEY.split(','),
   },
 });
 
@@ -27,4 +29,4 @@ const oidc = new Provider(`https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
 oidc.proxy = true;
 
 // listen on the heroku generated port
-oidc.listen(process.env.PORT);
+oidc.listen(PORT);
