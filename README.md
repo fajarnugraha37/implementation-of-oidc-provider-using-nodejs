@@ -18,8 +18,8 @@ npm run start
 ```
 
 ### simulation
-try to open htt://localhost:80/auth?client_id=foo&response_type=id_token&redirect_uri=https%3A%2F%2Fjwt.io&scope=openid%20email&nonce=foobar&prompt=login
-enter foo@example.com or bar@example.com and any password
+<p>try to open http://localhost:80/auth?client_id=foo&response_type=id_token&redirect_uri=https%3A%2F%2Fjwt.io&scope=openid%20email&nonce=foobar&prompt=login</p>
+<p>enter foo@example.com or bar@example.com and any password</p>
 
 ### NOTE
 This is just a simple simulation with minimal configuration, NEVER USE it in production or real projects
